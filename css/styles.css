@@ -1409,7 +1409,7 @@ body.modal-open {
      the cards real height (there were 177px empty above and 86px below).
      Same vw anchoring as the desktop rule — see the note there. */
   .work-strip-wrap {
-    top: calc(9vw + 44px);
+    top: calc(9vw + 72px);
   }
 
   .work-card {
