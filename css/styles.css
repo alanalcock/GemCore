@@ -1056,6 +1056,7 @@ body.nav-on-light .nav-item.active {
   bottom: 3.5%;
   display: flex;
   justify-content: center;
+  z-index: 25;
 }
 
 /* ============================================================
@@ -1337,15 +1338,14 @@ body.modal-open {
   }
 
   /* Bottom-anchored UI clears the floating nav */
-  #hero-tabs-container,
-  #hero-contact-panel {
+  #hero-tabs-container {
     bottom: 4.5rem;
   }
 
-  /* The contact card sits alone under its heading, so lift it off the nav
-     and split the ~300px of empty space above it with the space below. */
+  /* The contact card sits closer to the top under the CONTACT US heading */
   #hero-contact-panel {
-    bottom: 8.5rem;
+    top: 5.25rem;
+    bottom: auto;
   }
 
   /* Shorter phones (667px and under): the ABOUT copy card plus the founder card
@@ -1369,25 +1369,19 @@ body.modal-open {
     bottom: 4.5rem;
   }
 
-  /* Hero CTA stacks above the drawing tabs (4.5rem + 44px tab bar), centred.
-     Centring uses left: calc(50% - half-width) rather than a translate, because
-     main.js rewrites this element's transform on every scroll frame. */
-  #hero-cta {
-    bottom: 11.75rem;
-    left: calc(50% - 8rem);   /* half of w-[16rem] */
-    right: auto;
-  }
-
-  /* Smaller drawing, sitting in the band between the wordmark and the CTA.
-     object-contain (mobile markup uses object-cover) so the whole cutaway is
-     visible instead of being cropped off both edges. */
+  /* Drawing container holding combined blueprint + CTA card, flush to top with zero padding */
   #hero-drawing-container {
-    bottom: 19.5rem;
-    height: 34%;
+    bottom: 8.5rem;
+    height: auto;
+    max-height: none;
   }
 
   #hero-drawing-image {
-    object-fit: contain;
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1376 / 768;
+    object-fit: cover;
   }
 
   /* Nothing at the top any more — pull the giant type up. 1.75rem rather than
@@ -1423,7 +1417,7 @@ body.modal-open {
   }
 
   .work-card img {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4 / 3;
   }
 
 }

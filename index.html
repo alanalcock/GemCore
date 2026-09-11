@@ -121,15 +121,30 @@
         </div>
       </div>
 
-      <!-- LAYER 3: RESIDENTIAL HERO ARCHITECTURAL DRAWING -->
-      <div id="hero-drawing-container" class="absolute inset-x-0 bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-14 h-[48%] sm:h-[52%] md:h-[55%] lg:h-[57%] z-10 flex items-end justify-center pointer-events-none will-change-transform">
-        <div class="relative w-full h-full max-w-4xl lg:max-w-[960px] mx-auto flex items-end justify-center overflow-hidden rounded-xl sm:rounded-2xl drop-shadow-2xl">
-          <img 
-            id="hero-drawing-image"
-            src="assets/images/hero-residential-villa.jpg" 
-            alt="Residential Hero Architectural Drawing" 
-            class="w-full h-full object-cover object-bottom sm:object-contain sm:object-bottom drop-shadow-2xl transition-opacity duration-300"
-          />
+      <!-- LAYER 3: RESIDENTIAL HERO ARCHITECTURAL DRAWING & COMBINED CTA -->
+      <div id="hero-drawing-container" class="absolute inset-x-0 bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-14 h-auto max-h-[55%] sm:max-h-[62%] z-10 flex items-end justify-center pointer-events-none will-change-transform px-3 sm:px-6">
+        <div class="relative w-full max-w-4xl lg:max-w-[960px] mx-auto flex flex-col overflow-hidden rounded-xl sm:rounded-2xl border border-white/15 drop-shadow-2xl bg-slate-950/85 shadow-2xl">
+          <!-- Architectural Drawing (Top) - Flush with top edge, zero padding -->
+          <div class="relative w-full overflow-hidden">
+            <img 
+              id="hero-drawing-image"
+              src="assets/images/hero-residential-villa.jpg" 
+              alt="Residential Hero Architectural Drawing" 
+              class="w-full h-auto block aspect-[1376/768] object-cover transition-opacity duration-300"
+            />
+          </div>
+
+          <!-- Combined Bottom CTA (No separate radius, seamless border-t divider) -->
+          <div id="hero-cta" class="w-full bg-slate-950/85 backdrop-blur-md border-t border-white/15 p-3.5 sm:p-4 md:p-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-left pointer-events-auto">
+            <p class="text-[12.5px] sm:text-sm leading-relaxed text-slate-200 font-sans max-w-xl">
+              <span class="font-semibold text-white">Master-crafted residential builds in Hanover, Jamaica.</span>
+              Founded 2013 — from architectural drawings and bills of quantity to turnkey completion, on time and on budget.
+            </p>
+            <a href="#" data-stage="4" class="group shrink-0 flex w-full sm:w-auto items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg cursor-pointer whitespace-nowrap">
+              <span>START YOUR BUILD</span>
+              <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -430,16 +445,22 @@
           </div>
         </div>
 
-        <div class="work-cta">
-          <a href="#" data-stage="4" class="group inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg pointer-events-auto">
-            <span>START YOUR BUILD</span>
-            <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">&#8594;</span>
-          </a>
+        <div class="work-cta pointer-events-none">
+          <div class="work-narrative-card max-w-2xl w-full mx-4 sm:mx-6 p-3.5 sm:p-4 md:p-5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/15 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-5 text-left pointer-events-auto">
+            <p class="text-[12px] sm:text-[13px] md:text-sm leading-relaxed text-slate-200 font-sans max-w-lg">
+              <span class="font-semibold text-white">Let’s take a look at our story — one project at a time.</span>
+              A phase-by-phase showcase of our flagship residential estate in Hanover, Jamaica — from architectural blueprints and reinforced foundations to custom pool masonry and turnkey handover.
+            </p>
+            <a href="#" data-stage="4" class="group shrink-0 flex w-full sm:w-auto items-center justify-between gap-3 pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg whitespace-nowrap cursor-pointer">
+              <span>START YOUR BUILD</span>
+              <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">&#8594;</span>
+            </a>
+          </div>
         </div>
       </div>
 
       <!-- LAYER 3.8: CONTACT US PANEL (REVEALED IN PHASE 4 AS THE FINISHED VILLA FADES IN) -->
-      <div id="hero-contact-panel" class="absolute inset-x-0 bottom-16 sm:bottom-28 lg:bottom-36 z-20 flex justify-end pointer-events-none opacity-0 will-change-transform px-4 sm:px-6 lg:px-16">
+      <div id="hero-contact-panel" class="absolute inset-x-0 bottom-16 sm:bottom-28 lg:bottom-36 z-20 flex justify-end pointer-events-none opacity-0 invisible will-change-transform px-4 sm:px-6 lg:px-16" style="visibility: hidden; opacity: 0;">
         <div class="max-w-md sm:max-w-lg w-full p-6 sm:p-7 rounded-xl bg-slate-950/85 backdrop-blur-2xl border border-white/20 shadow-2xl space-y-4 pointer-events-auto text-left">
           <!-- Left-Aligned Header -->
           <div class="text-left space-y-1 pb-2 border-b border-white/10">
@@ -570,27 +591,6 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- HERO CTA + COMPANY BLURB (BOTTOM RIGHT)                      -->
-      <!-- Only present in the opening hero moment - main.js fades this  -->
-      <!-- out on the same curve as the drawing tabs. Sits clear above   -->
-      <!-- the tab bar rather than beside it; the tabs run near full     -->
-      <!-- width on small screens and would collide.                     -->
-      <!-- ============================================================ -->
-      <div id="hero-cta" class="absolute right-6 sm:right-10 lg:right-16 bottom-24 sm:bottom-28 md:bottom-32 z-30 w-[16rem] sm:w-[19rem] will-change-transform">
-        <!-- Frosted card so the copy stays legible over the drawing and the
-             time-lapse photo behind it, whatever phase is showing. -->
-        <div class="rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/15 shadow-2xl p-4 sm:p-5 flex flex-col items-start gap-3 text-left">
-          <p class="text-[12.5px] sm:text-sm leading-relaxed text-slate-200 font-sans">
-            <span class="font-semibold text-white">Master-crafted residential builds in Hanover, Jamaica.</span>
-            Founded 2013 — from architectural drawings and bills of quantity to turnkey completion, on time and on budget.
-          </p>
-          <a href="#" data-stage="4" class="group flex w-full items-center justify-between pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg">
-            <span>START YOUR BUILD</span>
-            <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
-          </a>
-        </div>
-      </div>
 
     </section>
   </div>

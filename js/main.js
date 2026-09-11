@@ -151,12 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (heroCta) {
-      // Holds for the first sliver of scroll, then eases out across a wider band
-      // (~0.02 -> 0.16) so it drifts away with the scroll instead of blinking off.
       const ctaT = clamp((progress - 0.02) / 0.14, 0, 1);
       const ctaOut = smoothstep(ctaT);
-      heroCta.style.opacity = (1 - ctaOut).toFixed(3);
-      heroCta.style.transform = `translate3d(0, ${(ctaOut * 44).toFixed(1)}px, 0)`;
       heroCta.style.pointerEvents = ctaOut < 0.85 ? 'auto' : 'none';
     }
 
@@ -245,8 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (stage.panel) {
-        const lag = stage.panelLag !== undefined ? stage.panelLag : PANEL_LAG;
-        const panelIn = clamp((progress - stage.start - lag) / (0.08 - lag), 0, 1);
+        const isMobileContact = (stage.panel === heroContactPanel && window.innerWidth < 640);
+        const lag = isMobileContact ? 0.045 : (stage.panelLag !== undefined ? stage.panelLag : PANEL_LAG);
+        const span = isMobileContact ? 0.055 : (0.08 - lag);
+        const panelIn = clamp((progress - stage.start - lag) / span, 0, 1);
         const panelExitStart = next ? (next.start - 0.05) : 1;
         const panelExit = next ? clamp((progress - panelExitStart) / 0.05, 0, 1) : 0;
 
@@ -260,19 +258,22 @@ document.addEventListener('DOMContentLoaded', () => {
           stage.panel.style.transform = 'none';
           stage.panel.style.pointerEvents = (panelIn > 0.6 && panelExit < 0.5) ? 'auto' : 'none';
         } else if (stage.slideUp) {
-          const eased = 1 - Math.pow(1 - panelIn, 3);
-          const enterY = (1 - eased) * 130;
-          // No entrance fade: the card carries a backdrop-filter, and fading a
-          // backdrop-filtered element lets the sharp, unfiltered backdrop bleed
-          // through the blurred one — which reads as a second background sitting
-          // behind the card. The slide from +130% already does the reveal, so
-          // opacity only has to handle the exit.
-          const panelOpacity = 1 - panelExit;
-          const fadeTarget = stage.panel.firstElementChild || stage.panel;
-          stage.panel.style.opacity = '1';
-          fadeTarget.style.opacity = panelOpacity.toFixed(3);
-          stage.panel.style.transform = `translate3d(0, ${(enterY - panelExit * 18).toFixed(1)}%, 0)`;
-          stage.panel.style.pointerEvents = (panelIn > 0.6 && panelExit < 0.5) ? 'auto' : 'none';
+          if (panelIn <= 0) {
+            stage.panel.style.opacity = '0';
+            stage.panel.style.visibility = 'hidden';
+            stage.panel.style.pointerEvents = 'none';
+            stage.panel.style.transform = 'translate3d(0, 100vh, 0)';
+          } else {
+            stage.panel.style.visibility = 'visible';
+            const eased = 1 - Math.pow(1 - panelIn, 3);
+            const enterY = (1 - eased) * 60;
+            const panelOpacity = clamp(panelIn * 1.8, 0, 1) * (1 - panelExit);
+            const fadeTarget = stage.panel.firstElementChild || stage.panel;
+            stage.panel.style.opacity = panelOpacity.toFixed(3);
+            fadeTarget.style.opacity = '1';
+            stage.panel.style.transform = `translate3d(0, ${(enterY - panelExit * 18).toFixed(1)}px, 0)`;
+            stage.panel.style.pointerEvents = (panelIn > 0.5 && panelExit < 0.5) ? 'auto' : 'none';
+          }
         } else {
           const panelOpacity = panelIn * (1 - panelExit);
           const panelY = (1 - panelIn) * 35 - panelExit * 25;
@@ -474,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 3. Navigation Routing
-  function scrollToStage(index) {
+  function scrollToStage(index, instant = false) {
     const stage = stages[index];
     if (!stage || !heroTrack) return;
 
@@ -484,12 +485,19 @@ document.addEventListener('DOMContentLoaded', () => {
       0.27,  // ABOUT
       0.47,  // SERVICES
       0.68,  // WORK (strip settled in position from bottom-left)
-      0.88   // CONTACT (contact card fully slid up)
+      0.90   // CONTACT (contact card fully slid up)
     ];
     const target = stageTargets[index] !== undefined ? stageTargets[index] : stage.start;
 
-    window.scrollTo({ top: maxScroll * target, behavior: 'smooth' });
+    if (instant) {
+      document.documentElement.scrollTop = maxScroll * target;
+      window.scrollTo(0, maxScroll * target);
+      updateScrollVisuals();
+    } else {
+      window.scrollTo({ top: maxScroll * target, behavior: 'smooth' });
+    }
   }
+  window.scrollToStage = scrollToStage;
 
   // HOME is the one destination that isn't a stage hold - it goes to the very top.
   if (navHomeLink) {
