@@ -1384,11 +1384,9 @@ body.modal-open {
     object-fit: cover;
   }
 
-  /* Nothing at the top any more — pull the giant type up. 1.75rem rather than
-     1rem so the wrapper's -progress*6vh drift can't clip the later stage
-     headings off the top (WORK and CONTACT landed at -3px and -5px at 1rem). */
+  /* Nothing at the top any more — pull the giant type up to safe area. */
   #hero-title-container {
-    top: 1.75rem;
+    top: 2.75rem;
   }
 
 
@@ -1409,7 +1407,7 @@ body.modal-open {
      the cards real height (there were 177px empty above and 86px below).
      Same vw anchoring as the desktop rule — see the note there. */
   .work-strip-wrap {
-    top: calc(9vw + 72px);
+    top: calc(9vw + 88px);
   }
 
   .work-card {

@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1280 and up is untouched.
         const vw = window.innerWidth;
         const restY = i === 0 ? 0
-          : vw < 640 ? -12
+          : vw < 640 ? 0
           : vw < 768 ? 4       // title container sits 16px higher in this band
           : vw < 1024 ? -18
           : vw < 1280 ? -62
