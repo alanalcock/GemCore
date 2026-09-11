@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e18" />
+      <stop offset="50%" stop-color="#060a12" />
+      <stop offset="100%" stop-color="#03060a" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.3" />
+    </linearGradient>
+    <linearGradient id="gGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7b7" />
+      <stop offset="40%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="cGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+      <stop offset="70%" stop-color="#10b981" stop-opacity="0.06" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="12" />
+  <circle cx="256" cy="256" r="180" fill="url(#ambientGlow)" />
+  <path d="M256 36 L256 52 M256 460 L256 476 M36 256 L52 256 M460 256 L476 256" stroke="#34d399" stroke-width="2" stroke-opacity="0.35" stroke-linecap="round" />
+  <g filter="url(#shadow)">
+    <g transform="translate(50.37, 362.16) scale(0.2850, -0.2850)">
+      <path d="M424 -12Q344 -12 275.0 17.0Q206 46 154.0 98.0Q102 150 73.0 220.0Q44 290 44 373Q44 456 72.0 526.5Q100 597 151.0 648.5Q202 700 270.5 728.5Q339 757 420 757Q501 757 565.5 730.0Q630 703 675.0 658.0Q720 613 739 558L602 492Q583 546 535.5 581.5Q488 617 420 617Q354 617 304.0 586.0Q254 555 226.5 500.5Q199 446 199 373Q199 300 228.0 245.0Q257 190 307.5 159.0Q358 128 424 128Q475 128 519.5 147.5Q564 167 591.5 204.0Q619 241 619 293V355L690 295H420V425H774V346Q774 255 744.0 187.5Q714 120 663.5 75.5Q613 31 550.5 9.5Q488 -12 424 -12Z" fill="url(#gGrad)" />
+    </g>
+    <g transform="translate(238.47, 362.16) scale(0.2850, -0.2850)">
+      <path d="M420 -12Q340 -12 271.5 17.0Q203 46 152.0 98.0Q101 150 72.5 220.0Q44 290 44 373Q44 456 72.0 526.5Q100 597 151.0 648.5Q202 700 270.5 728.5Q339 757 420 757Q501 757 565.5 730.0Q630 703 675.0 658.0Q720 613 739 558L602 492Q583 546 535.5 581.5Q488 617 420 617Q354 617 304.0 586.0Q254 555 226.5 500.5Q199 446 199 373Q199 300 226.5 245.0Q254 190 304.0 159.0Q354 128 420 128Q488 128 535.5 163.5Q583 199 602 253L739 187Q720 132 675.0 87.0Q630 42 565.5 15.0Q501 -12 420 -12Z" fill="url(#cGrad)" />
+    </g>
+  </g>
+  <polygon points="256,112 272,132 256,152 240,132" fill="#34d399" stroke="#ffffff" stroke-width="2.5" opacity="0.95" />
+  <circle cx="256" cy="132" r="2.5" fill="#ffffff" />
+</svg>

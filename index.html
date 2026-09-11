@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEMCORE | Architectural Production</title>
+  <meta name="description" content="Master-crafted residential builds and architectural production in Hanover, Jamaica. Four phases, one contract, keys in hand." />
+
+  <!-- Social Link Preview & Open Graph (WhatsApp, iMessage, LinkedIn, Facebook, Slack) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GEMCORE | Architectural Production" />
+  <meta property="og:description" content="Master-crafted residential builds and architectural production in Hanover, Jamaica. Four phases, one contract, keys in hand." />
+  <meta property="og:image" content="assets/images/preview-thumb.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="GEMCORE Architectural Production - Modern Luxury Villa Section Drawing" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GEMCORE | Architectural Production" />
+  <meta name="twitter:description" content="Master-crafted residential builds and architectural production in Hanover, Jamaica. Four phases, one contract, keys in hand." />
+  <meta name="twitter:image" content="assets/images/preview-thumb.jpg" />
+  
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <meta name="theme-color" content="#080e18" />
+  
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="m-0 p-0 w-full min-h-screen font-sans antialiased select-none text-slate-100 bg-[#0c0d12]">
+
+  <!-- ============================================================ -->
+  <!-- HERO -> ABOUT -> SERVICES -> WORK -> CONTACT TRACK (700vh)   -->
+  <!-- ============================================================ -->
+  <!-- z-10 keeps the whole track painting above the fixed footer behind it -->
+  <div id="hero-scroll-track" class="relative z-10 w-full h-[700vh]">
+
+    <!-- FULLSCREEN HERO SECTION (EDGE-TO-EDGE FULL WIDTH & HEIGHT)   -->
+    <section class="hero-fullscreen sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
+      
+      <!-- LAYER 1: TIME-LAPSE BACKGROUNDS (PHASE 01 EXCAVATION -> PHASE 02 STRUCTURAL CONCRETE) -->
+      <div id="hero-bg-container" class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <!-- Stage 0: Site Excavation & Groundwork -->
+        <img 
+          id="hero-bg-stage0"
+          src="assets/images/site-excavation-ground.jpg" 
+          alt="Phase 01: Site Excavation & Groundwork in Hanover, Jamaica" 
+          class="w-full h-full object-cover object-center will-change-transform scale-100 absolute inset-0"
+        />
+        <!-- Stage 1: Structural Concrete & Formwork (Fades in on scroll past About Us) -->
+        <img 
+          id="hero-bg-stage1"
+          src="assets/images/villa-construction-stage.jpg" 
+          alt="Phase 02: Structural Concrete Formwork in Hanover, Jamaica" 
+          class="w-full h-full object-cover object-center will-change-transform scale-100 opacity-0 absolute inset-0"
+        />
+        <!-- Stage 2: Advanced Enclosure & Pool (Fades in on scroll past Our Services) -->
+        <img
+          id="hero-bg-stage2"
+          src="assets/images/villa-phase3-our-work.jpg"
+          alt="Phase 03: Advanced Enclosure & Pool Integration in Hanover, Jamaica"
+          class="w-full h-full object-cover object-center will-change-transform scale-100 opacity-0 absolute inset-0"
+        />
+        <!-- Stage 3: Turnkey Completed Villa (Fades in on scroll past Our Work) -->
+        <img
+          id="hero-bg-stage3"
+          src="assets/images/villa-final-completed-stage.jpg"
+          alt="Phase 04: Turnkey Architectural Completion in Hanover, Jamaica"
+          class="w-full h-full object-cover object-center will-change-transform scale-100 opacity-0 absolute inset-0"
+        />
+        <!-- Atmospheric Vignette & Contrast Overlay (reduced opacity, removed in final phase) -->
+        <div id="hero-bg-overlay" class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none will-change-[opacity]"></div>
+      </div>
+
+      <!-- LAYER 2: GIANT TITLE (GEMCORE -> ABOUT US -> OUR SERVICES ON SCROLL) -->
+      <!-- z-[5] keeps the giant type between the background and the drawing, so the drawing overlaps it -->
+      <!-- overflow-visible so the raised stage headings aren't clipped at the top.
+           The giant type is still contained horizontally by the section's own
+           overflow-hidden and html { overflow-x: clip }. -->
+      <div id="hero-title-container" class="absolute top-14 sm:top-20 md:top-24 lg:top-28 inset-x-0 flex items-center justify-center pointer-events-none z-[5] overflow-visible px-2 sm:px-4">
+        <div id="hero-title-wrapper" class="relative inline-flex items-center justify-center will-change-transform origin-center">
+          <!-- State 1: GEMCORE (H1 behind image) + 1-Row Subtitle matching width -->
+          <div id="hero-gemcore-title" class="inline-flex flex-col items-stretch will-change-transform select-none">
+            <h1 id="gemcore-h1" class="giant-title text-[15.5vw] md:text-[15vw] lg:text-[14.5vw] tracking-tighter text-white font-black opacity-95 leading-none m-0 p-0 block">
+              GEMCORE
+            </h1>
+            <p id="gemcore-subtitle-row" class="gemcore-subtitle-row">
+              CONSTRUCTION ENTERPRICE LTD
+            </p>
+          </div>
+          <!-- State 2: ABOUT US Text (revealed after drawing departs) -->
+          <span id="hero-about-title" class="giant-title text-[7.6vw] md:text-[7.2vw] lg:text-[6.8vw] tracking-tighter text-white font-black opacity-0 absolute inset-0 flex items-center justify-center will-change-transform whitespace-nowrap">
+            ABOUT US
+          </span>
+          <!-- State 3: OUR SERVICES Text (revealed when Phase 2 fades in) -->
+          <span id="hero-services-title" class="giant-title text-[7.6vw] md:text-[7.2vw] lg:text-[6.8vw] tracking-tighter text-white font-black opacity-0 absolute inset-0 flex items-center justify-center will-change-transform whitespace-nowrap">
+            OUR SERVICES
+          </span>
+          <!-- State 4: OUR WORK Text (revealed when Phase 3 fades in) -->
+          <span id="hero-work-title" class="giant-title text-[7.6vw] md:text-[7.2vw] lg:text-[6.8vw] tracking-tighter text-white font-black opacity-0 absolute inset-0 flex items-center justify-center will-change-transform whitespace-nowrap">
+            OUR WORK
+          </span>
+          <!-- State 5: CONTACT US Text (revealed when the completed villa fades in) -->
+          <span id="hero-contact-title" class="giant-title text-[7.6vw] md:text-[7.2vw] lg:text-[6.8vw] tracking-tighter text-white font-black opacity-0 absolute inset-0 flex items-center justify-center will-change-transform whitespace-nowrap">
+            CONTACT US
+          </span>
+        </div>
+      </div>
+
+      <!-- LAYER 3: RESIDENTIAL HERO ARCHITECTURAL DRAWING -->
+      <div id="hero-drawing-container" class="absolute inset-x-0 bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-14 h-[48%] sm:h-[52%] md:h-[55%] lg:h-[57%] z-10 flex items-end justify-center pointer-events-none will-change-transform">
+        <div class="relative w-full h-full max-w-4xl lg:max-w-[960px] mx-auto flex items-end justify-center overflow-hidden rounded-xl sm:rounded-2xl drop-shadow-2xl">
+          <img 
+            id="hero-drawing-image"
+            src="assets/images/hero-residential-villa.jpg" 
+            alt="Residential Hero Architectural Drawing" 
+            class="w-full h-full object-cover object-bottom sm:object-contain sm:object-bottom drop-shadow-2xl transition-opacity duration-300"
+          />
+        </div>
+      </div>
+
+      <!-- LAYER 3.5: ABOUT US PANEL (REVEALED IN PHASE 1 AS DRAWING SCROLLS AWAY) -->
+      <div id="hero-about-panel" class="absolute inset-x-0 bottom-20 sm:bottom-28 md:bottom-32 lg:bottom-40 z-20 flex items-end justify-between gap-6 pointer-events-none opacity-0 will-change-transform px-4 sm:px-6 lg:px-16">
+        <div class="about-detail-card max-w-md w-full p-7 sm:p-9 rounded-xl bg-slate-950/60 backdrop-blur-xl border border-white/20 shadow-2xl text-left space-y-6 pointer-events-auto">
+          <h3 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight font-sans">
+            Founded August 2013 • Hanover, Jamaica
+          </h3>
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            Founded by Mr. Kenton Billings, Gemcore Construction Enterprise is committed to master-crafted residential developments and structural engineering across Jamaica. From site clearing to turnkey completion, we build architectural legacies.
+          </p>
+          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-left">
+            <div>
+              <p class="text-white font-bold text-base sm:text-lg font-mono">10+ Years</p>
+              <p class="text-slate-400 text-[11.5px] sm:text-sm">Excellence</p>
+            </div>
+            <div>
+              <p class="text-white font-bold text-base sm:text-lg font-mono">100% Turnkey</p>
+              <p class="text-slate-400 text-[11.5px] sm:text-sm">Delivery</p>
+            </div>
+          </div>
+          <div class="pt-1">
+            <span class="inline-flex items-center gap-1.5 text-sm text-emerald-400 font-mono">
+              <span>Scroll down to reveal Phase 02 & Our Services</span>
+              <span>↓</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Team carousel. Slide 1 is the founder (from BUSINESS.md); slides 2
+             and 3 are PLACEHOLDERS awaiting real names, roles and photos.
+             To add a member, copy a .founder-card figure and add one dot button
+             — main.js counts what's in the DOM, no JS edit needed.
+             Portraits are placeholders too: drop the photo in at
+             assets/images/team/<name>.jpg and swap .founder-photo for an <img>. -->
+        <div id="hero-founder" class="founder-carousel pointer-events-auto">
+          <div class="founder-stage">
+            <button type="button" class="founder-nav founder-nav-prev" aria-label="Previous team member">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7" />
+              </svg>
+            </button>
+
+            <figure class="founder-card is-active" data-team-slide="0">
+              <div class="founder-photo" role="img" aria-label="Portrait placeholder for Mr. Kenton Billings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="8.5" r="3.75" />
+                  <path d="M4.5 20.5a7.5 7.5 0 0 1 15 0" />
+                </svg>
+                <span class="founder-photo-note">Photo to come</span>
+              </div>
+              <figcaption class="founder-caption">
+                <p class="founder-name">Mr. Kenton Billings</p>
+                <p class="founder-role">Founder &amp; CEO</p>
+                <p class="founder-blurb">Seasoned contractor and visionary entrepreneur — building since August 2013.</p>
+              </figcaption>
+            </figure>
+
+            <button type="button" class="founder-nav founder-nav-next" aria-label="Next team member">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="founder-dots" role="tablist" aria-label="Team members">
+            <button type="button" class="founder-dot is-active" role="tab" aria-selected="true" aria-label="Show Mr. Kenton Billings, Founder and CEO"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYER 3.6: OUR SERVICES — one card per service, scattered around the
+           giant heading rather than stacked in a single panel. Services come
+           from BUSINESS.md (sourced from the pitch deck). main.js staggers each
+           card's entrance across the SERVICES scroll band; positions live in
+           styles.css as .sc-1 … .sc-7. -->
+      <div id="hero-services-panel" class="absolute inset-0 z-20 pointer-events-none opacity-0 will-change-transform">
+        <div id="services-cards" class="absolute inset-0">
+          <article class="service-card sc-1" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Building Designs drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/01-building-designs.jpg" alt="Gemcore Service: Building Designs" loading="lazy" />
+              <span class="service-card-num">01</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Building Designs</p>
+            <p class="service-card-desc">Architectural drawings and 3D concepts that turn your brief into a buildable plan.</p>
+          </article>
+          <article class="service-card sc-2" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Bill of Quantity drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/02-bill-of-quantity.jpg" alt="Gemcore Service: Bill of Quantity" loading="lazy" />
+              <span class="service-card-num">02</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Bill of Quantity</p>
+            <p class="service-card-desc">Detailed take-offs and transparent cost estimates before the first block is laid.</p>
+          </article>
+          <article class="service-card sc-3" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Tiling drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/03-tiling.jpg" alt="Gemcore Service: Tiling" loading="lazy" />
+              <span class="service-card-num">03</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Tiling</p>
+            <p class="service-card-desc">Floors, walls and countertops set to a precise, lasting finish.</p>
+          </article>
+          <article class="service-card sc-4" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Masonry drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/04-masonry.jpg" alt="Gemcore Service: Masonry" loading="lazy" />
+              <span class="service-card-num">04</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Masonry</p>
+            <p class="service-card-desc">Block work, rendering and structural masonry built for Caribbean conditions.</p>
+          </article>
+          <article class="service-card sc-5" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Plumbing drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/05-plumbing.jpg" alt="Gemcore Service: Plumbing" loading="lazy" />
+              <span class="service-card-num">05</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Plumbing</p>
+            <p class="service-card-desc">Supply lines, drainage and fixture installation, roughed in and finished.</p>
+          </article>
+          <article class="service-card sc-6" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Steel Work drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/06-steel-work.jpg" alt="Gemcore Service: Steel Work" loading="lazy" />
+              <span class="service-card-num">06</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Steel Work</p>
+            <p class="service-card-desc">Reinforcement, formwork steel and structural fabrication.</p>
+          </article>
+          <article class="service-card sc-7" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Click to zoom Carpentry drawing">
+            <div class="service-card-art">
+              <img src="assets/images/services/07-carpentry.jpg" alt="Gemcore Service: Carpentry" loading="lazy" />
+              <span class="service-card-num">07</span>
+              <span class="service-card-zoom-hint" title="Click to zoom" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </span>
+            </div>
+            <p class="service-card-title">Carpentry</p>
+            <p class="service-card-desc">Framing, roofing, joinery and finish carpentry throughout the build.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- LAYER 3.7: OUR WORK — one card per completed stage of the flagship
+           villa build, taken from the deck's "OUR PRIDE" slides (photos
+           extracted to assets/images/work/, full set in assets/images/deck/).
+           main.js tracks the strip sideways across the WORK scroll band. -->
+      <div id="hero-work-panel" class="absolute inset-0 z-20 pointer-events-none opacity-0 will-change-transform">
+        <div class="work-strip-wrap">
+          <div id="work-strip" class="work-strip">
+          <figure class="work-card">
+            <img src="assets/images/work/01-drawings-designs.jpg" alt="Gemcore project: Drawings & 3D Designs" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">01</span>
+              <p class="work-card-title">Drawings &amp; 3D Designs</p>
+              <p class="work-card-desc">Architectural drawings and 3D concepts for the estate.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/02-foundation.jpg" alt="Gemcore project: Foundation" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">02</span>
+              <p class="work-card-title">Foundation</p>
+              <p class="work-card-desc">Excavation, trench cages and deep footings set out.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/03-formwork-steelworks.jpg" alt="Gemcore project: Formwork & Steelworks" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">03</span>
+              <p class="work-card-title">Formwork &amp; Steelworks</p>
+              <p class="work-card-desc">Main house walls and decking framed and reinforced.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/04-steelworks.jpg" alt="Gemcore project: Steelworks" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">04</span>
+              <p class="work-card-title">Steelworks</p>
+              <p class="work-card-desc">Reinforcement cages tied for the structural frame.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/05-concrete-pouring.jpg" alt="Gemcore project: Concrete Pouring" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">05</span>
+              <p class="work-card-title">Concrete Pouring</p>
+              <p class="work-card-desc">Main house walls poured and vibrated in place.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/06-first-floor-formwork.jpg" alt="Gemcore project: First Floor Formwork" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">06</span>
+              <p class="work-card-title">First Floor Formwork</p>
+              <p class="work-card-desc">Formwork and walls raised for the first floor.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/07-first-floor-decking.jpg" alt="Gemcore project: First Floor Decking" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">07</span>
+              <p class="work-card-title">First Floor Decking</p>
+              <p class="work-card-desc">Suspended slab decked and propped for the pour.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/08-pool-wall-formwork.jpg" alt="Gemcore project: Pool Wall Formwork" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">08</span>
+              <p class="work-card-title">Pool Wall Formwork</p>
+              <p class="work-card-desc">Custom formwork built for the swimming pool walls.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/09-pool-works-roof.jpg" alt="Gemcore project: Pool Works & Overhead Roof" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">09</span>
+              <p class="work-card-title">Pool Works &amp; Overhead Roof</p>
+              <p class="work-card-desc">Pool basin completed under the overhead roof structure.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/10-carpentry-roof-works.jpg" alt="Gemcore project: Carpentry & Roof Works" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">10</span>
+              <p class="work-card-title">Carpentry &amp; Roof Works</p>
+              <p class="work-card-desc">Roof carpentry framed out across the estate.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/11-roofing.jpg" alt="Gemcore project: Roofing" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">11</span>
+              <p class="work-card-title">Roofing</p>
+              <p class="work-card-desc">Metal roofing sheeted and sealed for the tropics.</p>
+            </figcaption>
+          </figure>
+          <figure class="work-card">
+            <img src="assets/images/work/12-exterior-gym-staircase.jpg" alt="Gemcore project: Exterior & Gym Staircase" loading="lazy" />
+            <figcaption>
+              <span class="work-card-num">12</span>
+              <p class="work-card-title">Exterior &amp; Gym Staircase</p>
+              <p class="work-card-desc">Facade finished, staircase run to the first-floor gym.</p>
+            </figcaption>
+          </figure>
+          </div>
+        </div>
+
+        <div class="work-cta">
+          <a href="#" data-stage="4" class="group inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg pointer-events-auto">
+            <span>START YOUR BUILD</span>
+            <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">&#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- LAYER 3.8: CONTACT US PANEL (REVEALED IN PHASE 4 AS THE FINISHED VILLA FADES IN) -->
+      <div id="hero-contact-panel" class="absolute inset-x-0 bottom-16 sm:bottom-28 lg:bottom-36 z-20 flex justify-end pointer-events-none opacity-0 will-change-transform px-4 sm:px-6 lg:px-16">
+        <div class="max-w-md sm:max-w-lg w-full p-6 sm:p-7 rounded-xl bg-slate-950/85 backdrop-blur-2xl border border-white/20 shadow-2xl space-y-4 pointer-events-auto text-left">
+          <!-- Left-Aligned Header -->
+          <div class="text-left space-y-1 pb-2 border-b border-white/10">
+            <div class="inline-flex items-center gap-1.5 text-emerald-400 font-mono text-[12.5px] font-semibold tracking-wider uppercase">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Contact or Call for Consultation</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-sans">
+              Bring Your Vision to Life
+            </h3>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Four phases, one trusted contract, keys in hand. Send us an inquiry below or call our office directly for expert advice.
+            </p>
+          </div>
+
+          <!-- Contact Form -->
+          <form id="hero-contact-form" class="space-y-2.5">
+            <!-- First Name & Last Name -->
+            <div class="grid grid-cols-2 gap-2">
+              <input
+                type="text"
+                name="fname"
+                required
+                placeholder="First Name *"
+                class="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-400 text-sm font-sans focus:outline-none focus:border-emerald-400 focus:bg-white/10 transition-colors" />
+              <input
+                type="text"
+                name="lname"
+                required
+                placeholder="Last Name *"
+                class="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-400 text-sm font-sans focus:outline-none focus:border-emerald-400 focus:bg-white/10 transition-colors" />
+            </div>
+
+            <!-- Contact & Email -->
+            <div class="grid grid-cols-2 gap-2">
+              <input
+                type="tel"
+                name="contact"
+                required
+                placeholder="Contact / Phone *"
+                class="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-400 text-sm font-sans focus:outline-none focus:border-emerald-400 focus:bg-white/10 transition-colors" />
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Email Address *"
+                class="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-400 text-sm font-sans focus:outline-none focus:border-emerald-400 focus:bg-white/10 transition-colors" />
+            </div>
+
+            <!-- Message -->
+            <textarea
+                name="message"
+              rows="3"
+              required
+              placeholder="Tell us about your project... *"
+              class="w-full px-3 py-2 rounded-lg bg-white/5 border border-white/15 text-white placeholder-slate-400 text-sm font-sans focus:outline-none focus:border-emerald-400 focus:bg-white/10 transition-colors resize-none"></textarea>
+
+            <!-- Action Buttons: 50/50 Split (Submit + Border-only Phone Button) -->
+            <div class="pt-1.5 grid grid-cols-2 gap-2.5 sm:gap-3 w-full">
+              <button
+                type="submit"
+                class="group w-full inline-flex items-center justify-between pl-3.5 pr-2 sm:pl-4 sm:pr-2.5 py-2.5 rounded-full bg-emerald-400 text-slate-950 text-xs sm:text-sm font-mono font-bold hover:bg-white transition-all shadow-lg cursor-pointer whitespace-nowrap">
+                <span>SEND INQUIRY</span>
+                <span class="w-6 h-6 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-xs shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+              </button>
+
+              <a
+                href="tel:+18767745880"
+                class="w-full inline-flex items-center justify-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-full border border-emerald-400/80 hover:border-emerald-300 hover:bg-emerald-400/10 text-emerald-400 hover:text-white text-xs sm:text-sm font-mono font-semibold transition-all shadow-sm cursor-pointer whitespace-nowrap">
+                <span>📞</span>
+                <span>+1 (876) 774-5880</span>
+              </a>
+            </div>
+          </form>
+
+          <!-- Success State Container (hidden initially) -->
+          <div id="hero-contact-success" class="hidden flex-col items-center justify-center py-6 text-center space-y-2">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-400 text-xl font-bold">
+              ✓
+            </div>
+            <h4 class="text-lg font-bold text-white">Inquiry Sent</h4>
+            <p class="text-sm text-slate-300 max-w-xs leading-relaxed">
+              Thank you for reaching out. We will review your project details and get in touch promptly.
+            </p>
+            <button type="button" id="hero-contact-reset" class="text-[12.5px] text-emerald-400 hover:text-white font-mono underline pt-1 cursor-pointer">
+              Send another message
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SCREEN TOP: NAVIGATION BAR                                   -->
+      <!-- ============================================================ -->
+      <nav class="relative z-30 flex items-center justify-between w-full px-6 sm:px-10 lg:px-16 pt-6 sm:pt-8 lg:pt-10">
+        <!-- Left Nav Area (same bg and outline from Get In Touch button) -->
+        <div
+          id="nav-left-container"
+          class="nav-left-bar no-scrollbar">
+          <a href="#" id="nav-home-link" class="nav-item is-hidden">HOME</a>
+          <a href="#about" id="nav-about-link" class="nav-item">ABOUT</a>
+          <a href="#" id="nav-services-link" class="nav-item">SERVICES</a>
+          <a href="#" id="nav-work-link" class="nav-item">WORK</a>
+          <a href="#" id="nav-contact-link" class="nav-item">CONTACT</a>
+        </div>
+
+        <!-- Right Pill Button — same emerald treatment as the hero's
+             START YOUR BUILD call to action. -->
+        <a
+          href="#"
+          id="nav-touch-link"
+          class="group inline-flex items-center gap-3 pl-5 pr-2 py-2 rounded-full text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold cursor-pointer whitespace-nowrap">
+          <span>GET IN TOUCH</span>
+          <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+      </nav>
+
+      <!-- ============================================================ -->
+      <!-- TABS BELOW IMAGE: LINKED ARCHITECTURAL DRAWINGS (FLIPPED)    -->
+      <!-- ============================================================ -->
+      <div id="hero-tabs-container" class="absolute bottom-8 sm:bottom-10 md:bottom-12 inset-x-0 flex justify-center z-30 pointer-events-auto px-4 will-change-transform">
+        <div class="hero-tabs-bar rounded-full p-1.5 flex items-center gap-1 sm:gap-1.5 max-w-full overflow-x-auto shadow-2xl">
+          <button type="button" class="hero-tab-btn active" data-img="assets/images/hero-residential-villa.jpg">Isometric 3D</button>
+          <button type="button" class="hero-tab-btn" data-img="assets/images/drawing-section-view.jpg">Building Section View</button>
+          <button type="button" class="hero-tab-btn" data-img="assets/images/drawing-elevation.jpg">Elevation Drawing</button>
+          <button type="button" class="hero-tab-btn" data-img="assets/images/drawing-floor-plan.jpg">Ground Floor Plan</button>
+          <button type="button" class="hero-tab-btn" data-img="assets/images/drawing-site-plan.jpg">Site Plan</button>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- HERO CTA + COMPANY BLURB (BOTTOM RIGHT)                      -->
+      <!-- Only present in the opening hero moment - main.js fades this  -->
+      <!-- out on the same curve as the drawing tabs. Sits clear above   -->
+      <!-- the tab bar rather than beside it; the tabs run near full     -->
+      <!-- width on small screens and would collide.                     -->
+      <!-- ============================================================ -->
+      <div id="hero-cta" class="absolute right-6 sm:right-10 lg:right-16 bottom-24 sm:bottom-28 md:bottom-32 z-30 w-[16rem] sm:w-[19rem] will-change-transform">
+        <!-- Frosted card so the copy stays legible over the drawing and the
+             time-lapse photo behind it, whatever phase is showing. -->
+        <div class="rounded-lg bg-slate-950/75 backdrop-blur-md border border-white/15 shadow-2xl p-4 sm:p-5 flex flex-col items-start gap-3 text-left">
+          <p class="text-[12.5px] sm:text-sm leading-relaxed text-slate-200 font-sans">
+            <span class="font-semibold text-white">Master-crafted residential builds in Hanover, Jamaica.</span>
+            Founded 2013 — from architectural drawings and bills of quantity to turnkey completion, on time and on budget.
+          </p>
+          <a href="#" data-stage="4" class="group flex w-full items-center justify-between pl-5 pr-2 py-2 rounded-full bg-emerald-400 text-slate-950 text-[12.5px] sm:text-sm font-mono font-bold hover:bg-white transition-colors shadow-lg">
+            <span>START YOUR BUILD</span>
+            <span class="w-7 h-7 rounded-full bg-slate-950 text-emerald-400 flex items-center justify-center text-base shrink-0 transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SCROLL-TO-REVEAL FOOTER                                      -->
+  <!-- The footer is fixed to the bottom of the viewport and sits   -->
+  <!-- behind the track (z-0 vs z-10), so it stays hidden while the -->
+  <!-- sticky hero covers the screen. This spacer adds the scroll   -->
+  <!-- room that lets the hero travel up and uncover it. Spacer and -->
+  <!-- footer share the same height so the reveal lands exactly.    -->
+  <!-- ============================================================ -->
+  <!-- Spacer height MUST equal the footer height so the reveal lands exactly. -->
+  <div id="footer-reveal-spacer" class="relative w-full h-[46vh] pointer-events-none"></div>
+
+  <footer id="site-footer" class="fixed bottom-0 inset-x-0 z-0 h-[46vh] flex flex-col items-center justify-center px-6 sm:px-12 lg:px-20 text-emerald-100/90">
+    <div class="max-w-4xl w-full mx-auto text-center">
+      <!-- Width-filling wordmark, matching the hero: GEMCORE sized to the
+           container (cqw), CONSTRUCTION ENTERPRISE LTD spaced beneath it. -->
+      <div class="footer-wordmark-wrap">
+        <h2 class="footer-wordmark">GEMCORE</h2>
+        <p class="footer-wordmark-sub">CONSTRUCTION ENTERPRISE LTD</p>
+      </div>
+
+      <!-- Footer nav — reuses the [data-stage] scroll routing from main.js;
+           data-stage="0" is handled as "scroll to top". -->
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#" data-stage="0">HOME</a>
+        <a href="#" data-stage="1">ABOUT</a>
+        <a href="#" data-stage="2">SERVICES</a>
+        <a href="#" data-stage="3">WORK</a>
+        <a href="#" data-stage="4">CONTACT</a>
+      </nav>
+
+      <p class="footer-copyright text-[11.5px] sm:text-[12.5px] text-emerald-200/60 mt-3 sm:mt-4 tracking-wider">
+        © 2026 Gemcore Construction Enterprise. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       CARD ZOOM LIGHTBOX MODAL
+       High-res drafting sheet / project stage preview with
+       interactive zoom, keyboard navigation (Esc, Left, Right),
+       and fluid transitions.
+       ============================================================ -->
+  <div id="card-zoom-modal" class="card-zoom-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="card-zoom-title">
+    <div class="card-zoom-backdrop" id="card-zoom-backdrop"></div>
+    
+    <div class="card-zoom-dialog">
+      <!-- Close button -->
+      <button id="card-zoom-close" class="card-zoom-close" aria-label="Close zoom preview (Esc)">
+        <span class="card-zoom-close-icon">&times;</span>
+        <span class="card-zoom-close-kbd">ESC</span>
+      </button>
+
+      <!-- Prev / Next navigation buttons -->
+      <button id="card-zoom-prev" class="card-zoom-nav card-zoom-prev" aria-label="Previous card (Left Arrow)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button id="card-zoom-next" class="card-zoom-nav card-zoom-next" aria-label="Next card (Right Arrow)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Main card content -->
+      <div class="card-zoom-content" id="card-zoom-content">
+        <div class="card-zoom-img-container">
+          <img id="card-zoom-img" src="" alt="" class="card-zoom-img" />
+          <div class="card-zoom-badge-row">
+            <span id="card-zoom-badge" class="card-zoom-badge">01</span>
+            <span id="card-zoom-category" class="card-zoom-category">ARCHITECTURAL DRAFTING</span>
+          </div>
+        </div>
+        <div class="card-zoom-caption">
+          <h3 id="card-zoom-title" class="card-zoom-title"></h3>
+          <p id="card-zoom-desc" class="card-zoom-desc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

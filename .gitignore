@@ -1,0 +1,72 @@
+# ============================================================
+# GEMCORE Construction Enterprise — .gitignore
+# Excludes heavy presentation decks, raw extraction dumps,
+# scratch/testing artifacts, and environment files from publishing.
+# ============================================================
+
+# 1. Source Presentation & Heavy Binary Documents (~40MB+)
+*.pptx
+*.ppt
+*.docx
+*.pdf
+Gemcore Construction Enterprise .pptx
+
+# 2. Internal Business Notes & Draft References
+BUSINESS.md
+
+# 3. Raw Extraction Dumps & Unused Media (~48MB+)
+# (Production site uses assets/images/services/ and assets/images/work/)
+extracted/
+**/extracted/
+assets/extracted/
+assets/images/deck/
+*.mp4
+*.mov
+*.avi
+
+# 4. Scratch & Development Testing Artifacts
+scratch/
+*.py
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# 5. Editor & AI Assistant Cache
+.claude/
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 6. Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# 7. Logs & Temporary Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# 8. Node & Environment (if build tools / static hosts add them)
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/

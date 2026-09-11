@@ -1,0 +1,1429 @@
+/* Gemcore Construction - Fullscreen Hero Layout */
+
+:root {
+  --color-brand-primary: #15803d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  background-color: #0c0d12;
+}
+
+/* Fullscreen Hero Section */
+.hero-fullscreen {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #0c0d12;
+}
+
+/* Giant Background Typography */
+.giant-title {
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #ffffff;
+  color: #ffffff;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtitle 1-Row under GEMCORE H1: reduced width, increased font size, reduced kerning */
+.gemcore-subtitle-row {
+  width: 90%;
+  max-width: 90%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  white-space: nowrap !important;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(12px, 1.75vw, 30px);
+  line-height: 1.1;
+  letter-spacing: clamp(0.12em, 0.32vw, 0.26em);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+  padding-top: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Frosted Glass Floating Cards */
+.frosted-glass-card {
+  background: rgba(14, 17, 24, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.frosted-glass-card:hover {
+  background: rgba(14, 17, 24, 0.7);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Below Image Tab Bar Styles */
+.hero-tabs-bar {
+  background: rgba(14, 17, 24, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+  /* The bar scrolls horizontally when the tabs don't fit (mobile), but the
+     scrollbar sat under the pill and broke the shape — hide it, keep the scroll. */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-tabs-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-tab-btn {
+  padding: 6px 18px;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.hero-tab-btn.active {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f121a;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.hero-tab-btn:not(.active) {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-tab-btn:not(.active):hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* Left Nav Bar & Get In Touch button — frosted glass. The tint is light enough
+   (0.38) to read the photo through it; the heavy blur and the saturate boost
+   are what keep the label legible instead of the tint doing the work. */
+.nav-left-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  background: rgba(8, 14, 23, 0.38);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+  max-width: 100%;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Matches the hero's START YOUR BUILD button: solid emerald, dark label, dark
+   circular arrow, going white on hover. Not glass — it is the one call to
+   action in the nav and should read as a button, not as chrome. */
+#nav-touch-link {
+  background: #34d399;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transition: background-color 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+}
+
+#nav-touch-link:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Retired once the CONTACT form is on screen — the button has nowhere left to
+   send you. It sits at the end of a justify-between row, so fading it out
+   shifts nothing else. */
+#nav-touch-link.is-hidden {
+  opacity: 0;
+  transform: translateX(12px) scale(0.96);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .nav-left-bar {
+    gap: 0.35rem;
+    padding: 0.35rem;
+  }
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+@media (min-width: 640px) {
+  .nav-item {
+    font-size: 14px;
+    padding: 0.4rem 1.05rem;
+  }
+}
+
+.nav-item:hover:not(.active) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Pill showing which section is currently in view — same emerald as the
+   GET IN TOUCH button, so the nav has one accent colour rather than two. */
+.nav-item.active {
+  color: #020617;
+  font-weight: 700;
+  background: #34d399;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* Nav HOME button: hidden while on the first section, slides in smoothly on scroll */
+#nav-home-link {
+  overflow: hidden;
+  max-width: 6rem;
+  opacity: 1;
+  transform: translateX(0);
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-right 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s ease,
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#nav-home-link.is-hidden {
+  max-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-right: -0.25rem !important; /* cancels left bar gap */
+  border-width: 0 !important;
+  opacity: 0 !important;
+  transform: translateX(-8px) scale(0.95);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  #nav-home-link.is-hidden {
+    margin-right: -0.35rem !important; /* cancels sm:gap */
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hero Contact Form Fields */
+#hero-contact-form input,
+#hero-contact-form select,
+#hero-contact-form textarea {
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#hero-contact-form input:focus,
+#hero-contact-form select:focus,
+#hero-contact-form textarea:focus {
+  border-color: #34d399;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+}
+
+/* Site Footer — dark obsidian green close to black */
+#site-footer {
+  background-color: #021a13;
+  background-image: none;
+}
+
+/* Footer wordmark: GEMCORE fills the content column, sub row spaced to match. */
+.footer-wordmark-wrap {
+  container-type: inline-size;
+  /* Wider than the max-w-4xl text column; broken out and re-centered so the
+     wordmark reads bigger than the copy beneath it. cqw keeps the fill ratio. */
+  width: min(1180px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-wordmark {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-weight: 900;
+  font-size: 20.3cqw;
+  line-height: 0.8;
+  letter-spacing: -0.055em;
+  color: #ffffff;
+  opacity: 0.55;
+  white-space: nowrap;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+.footer-wordmark-sub {
+  margin: 0.45rem 0 0;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 3.05cqw;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;   /* balance the trailing letter-spacing so it stays centered */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+}
+
+/* Footer nav — small uppercase links under the wordmark */
+.footer-nav {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 1.4rem;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-nav a:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 640px) {
+  .footer-nav { font-size: 14px; gap: 0.5rem 1.75rem; }
+}
+
+.footer-copyright {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   SERVICES
+   Two layouts from one markup:
+     < 640px  a single vertical column that scrolls through the viewport
+     >= 640px the original scatter, pinned around the giant heading
+   Positions only; main.js drives each card's scroll entrance.
+   ============================================================ */
+.service-card {
+  --sc-tx: 0px;   /* horizontal offset JS folds into its transform */
+  width: 100%;
+  max-width: 30rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.85rem;
+  background: rgba(9, 13, 20, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.75);
+  text-align: left;
+  /* Visible by default now — the column as a whole is what animates, so the
+     old per-card opacity:0 (which JS used to fade in) would just hide them. */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Desktop/tablet: back to the pinned scatter. Cards are taken out of flow and
+   start hidden — main.js fades each one in on its own stagger. */
+@media (min-width: 640px) {
+  .service-card {
+    position: absolute;
+    width: 23vw;
+    max-width: 228px;
+    padding: 0.85rem 1rem;
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+}
+
+.service-card:hover {
+  border-color: rgba(52, 211, 153, 0.45);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85), 0 0 24px rgba(52, 211, 153, 0.16);
+}
+
+.service-card-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  max-height: 200px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 0.45rem;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65);
+}
+
+@media (min-width: 640px) {
+  .service-card-art {
+    max-height: 270px;
+    margin-bottom: 0.55rem;
+    border-radius: 0.55rem;
+  }
+}
+
+.service-card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.service-card:hover .service-card-art img {
+  transform: scale(1.06);
+}
+
+.service-card-num {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.4rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.3rem;
+  background: rgba(4, 55, 42, 0.92);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #34d399;
+  line-height: 1;
+  z-index: 2;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 640px) {
+  .service-card-num {
+    font-size: 11.5px;
+    top: 0.45rem;
+    left: 0.5rem;
+    padding: 0.2rem 0.45rem;
+  }
+}
+
+.service-card-zoom-hint {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(4, 55, 42, 0.92);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.service-card-zoom-hint svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .service-card-zoom-hint {
+    top: 0.45rem;
+    right: 0.5rem;
+    width: 24px;
+    height: 24px;
+  }
+  .service-card-zoom-hint svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.service-card:hover .service-card-zoom-hint {
+  transform: scale(1.14);
+  background: #047857;
+  color: #ffffff;
+  border-color: #34d399;
+}
+
+.service-card {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.service-card-title {
+  margin: 0 0 0.2rem;
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .service-card-title { font-size: 1.08rem; }
+}
+
+.service-card-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+@media (min-width: 640px) {
+  .service-card-desc {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}
+
+
+
+
+/* Mobile: one vertical column of cards that scrolls up through the viewport
+   across the SERVICES band. main.js drives the column's Y translation. */
+#services-cards {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.25rem;
+  will-change: transform;
+}
+
+/* Desktop/tablet: plain positioning context again — the cards place themselves
+   with .sc-1 … .sc-7 and the container never moves. */
+@media (min-width: 640px) {
+  #services-cards {
+    display: block;
+    gap: 0;
+    padding: 0;
+    will-change: auto;
+    transform: none;
+  }
+
+  /* Scatter positions — the 4-row alternating layout holds to 900px.
+     Rows are pitched 23% apart: a card is ~209px (226px when its title wraps
+     to two lines), and 23% of a 1024px-tall tablet is 236px. */
+  .sc-1 { left: 2%;   top: 8%; }
+  .sc-2 { right: 2%;  top: 5%; }
+  .sc-3 { left: 2.5%; top: 31%; }
+  .sc-4 { right: 2.5%; top: 28%; }
+  .sc-5 { left: 3%;   top: 54%; }
+  .sc-6 { right: 3%;  top: 51%; }
+  .sc-7 { left: 4%;   top: 77%; }
+}
+
+/* The diagonal scatter needs room for two cards plus a centred one, which only
+   exists above ~900px; below that the 4-row layout above stays. */
+@media (min-width: 901px) {
+  .sc-1 { left: 3%;  top: 28%; right: auto; }
+  .sc-2 { right: 3%; top: 22%; left: auto; }
+  .sc-3 { left: 6%;  top: 60%; right: auto; }
+  .sc-4 { right: 6%; top: 56%; left: auto; }
+  .sc-5 { left: 27%; top: 78%; right: auto; }
+  .sc-6 { right: 26%; top: 79%; left: auto; }
+  .sc-7 { left: 50%; top: 43%; right: auto; --sc-tx: -50%; }
+}
+
+/* A card is 228–245px tall, so the bottom row at 78/79% only clears the fold
+   above ~1100px of viewport height (1080p included). Below that, lift it and
+   raise the centre card. */
+@media (min-width: 901px) and (max-height: 1099px) {
+  .sc-5 { top: 66%; }
+  .sc-6 { top: 67%; }
+  .sc-7 { top: 30%; }
+}
+
+/* Narrow desktops: the cards hit their 228px max-width while the viewport is
+   still small, so the outer pair reaches across into the mid-band where 5 and 6
+   sit. Pull 3 and 4 tighter to the edges to keep that gap open. */
+@media (min-width: 901px) and (max-width: 1150px) {
+  .sc-3 { left: 2%; }
+  .sc-4 { right: 2%; }
+}
+
+/* Laptop-height windows (a 1366x768 screen leaves ~660px of viewport): three
+   tiers of 245px cards cannot fit, and the type is the part worth keeping at
+   full size, so crop the photo down instead. Card drops to ~193px. */
+@media (min-width: 901px) and (max-height: 779px) {
+  .service-card-art {
+    aspect-ratio: 2 / 1;
+    max-height: 105px;
+  }
+}
+
+/* ============================================================
+   ABOUT — the detail card hangs off the nav (desktop only)
+   The card sits directly under the left nav pill, matched to its width and
+   x-offset, and main.js rolls it down out of the pill. The nav is z-30 and the
+   panel z-20, so the card genuinely emerges from behind it. Mobile keeps the
+   bottom-anchored panel — the nav lives at the bottom of the screen there.
+   Nav geometry: 40px inset / 80px bottom edge at md, 64px / 88px at lg+.
+   768px is the floor: below it the founder card stacks under the copy instead
+   of sitting beside it, and that layout needs the bottom-anchored panel.
+   ============================================================ */
+@media (min-width: 768px) {
+  #hero-about-panel {
+    top: 0;
+    bottom: 0;
+    align-items: stretch;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .about-detail-card {
+    align-self: flex-start;
+    margin-top: 84px;           /* nav bar bottom + a 4px seam */
+    width: 446px;               /* exactly the nav pill's width */
+    max-width: 446px;
+    will-change: clip-path, transform;
+  }
+
+  /* Owner card sits low on the right, clear of the detail card's column. */
+  #hero-about-panel #hero-founder {
+    align-self: flex-end;
+    margin-bottom: 40px;
+  }
+}
+
+/* At tablet widths the row is only 688px wide, so the flex layout was shrinking
+   the detail card below the nav's 446px and breaking the alignment. Hold the
+   card and let the owner card give up the space instead. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-detail-card {
+    flex: 0 0 446px;
+  }
+
+  #hero-about-panel #hero-founder {
+    max-width: 214px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-about-panel {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .about-detail-card {
+    margin-top: 92px;
+  }
+}
+
+/* ============================================================
+   TEAM CAROUSEL (ABOUT stage, right side)
+   Slides are stacked in one grid cell so the frame keeps the height of the
+   tallest member and nothing reflows when you page through. Arrows straddle
+   the card's edges rather than sitting beside it, so adding them costs no
+   horizontal room — which matters at tablet widths where the row is tight.
+   ============================================================ */
+.founder-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 264px;
+}
+
+/* With one member the controls are [hidden] by main.js; drop the gap they'd
+   otherwise leave under the card. */
+.founder-carousel:not(:has(.founder-dots:not([hidden]))) {
+  gap: 0;
+}
+
+.founder-stage {
+  position: relative;
+  display: grid;
+  width: 100%;
+}
+
+.founder-stage > .founder-card {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s linear 0.28s;
+}
+
+.founder-stage > .founder-card.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s;
+}
+
+.founder-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  color: #0b0f16;
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.founder-nav svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.founder-nav-prev { left: -13px; }
+.founder-nav-next { right: -13px; }
+
+.founder-nav:hover {
+  background: #047857;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.founder-nav:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
+
+.founder-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.founder-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.founder-dot.is-active {
+  width: 20px;
+  background: #ffffff;
+}
+
+.founder-dot:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
+
+.founder-card {
+  margin: 0;
+  width: 100%;
+  max-width: 264px;
+  padding: 1.05rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 22px 50px -12px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  flex: 0 0 auto;
+}
+
+.founder-photo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px dashed rgba(15, 23, 42, 0.28);
+  background: rgba(15, 23, 42, 0.04);
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.founder-photo svg {
+  width: 34%;
+  height: auto;
+}
+
+.founder-photo-note {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.founder-caption {
+  margin: 0.7rem 0 0;
+}
+
+.founder-name {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0b0f16;
+}
+
+.founder-role {
+  margin: 0.15rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #047857;
+}
+
+.founder-blurb {
+  margin: 0.45rem 0 0;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.82);
+}
+
+/* About Us stage panel — elevated higher up off the bottom edge. Only below
+   768px: from there up the panel is full-height and the card hangs off the nav
+   (see the ABOUT dropdown block above), so a bottom offset would fight it. */
+@media (max-width: 767px) {
+  #hero-about-panel {
+    bottom: clamp(5rem, 13vh, 7rem);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  #hero-about-panel {
+    bottom: clamp(7rem, 20vh, 10.5rem);
+  }
+}
+
+/* Mobile: there's no room beside the copy card, so the founder card stacks
+   underneath it as a compact row (photo left, caption right) and main.js
+   reveals it as the scroll continues through the ABOUT band. */
+@media (max-width: 767px) {
+  #hero-about-panel {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 0.6rem;
+  }
+
+  .founder-carousel {
+    max-width: none;
+    width: 100%;
+  }
+
+  .founder-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    max-width: none;
+    width: 100%;
+    padding: 0.7rem;
+    /* No opacity:0 here — main.js fades the carousel wrapper (#hero-founder)
+       on continued scroll, and the stage handles which slide is showing. */
+  }
+
+  .founder-photo {
+    flex: 0 0 84px;
+    width: 84px;
+  }
+
+  .founder-caption {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .founder-blurb {
+    margin-top: 0.3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .founder-carousel { max-width: 284px; }
+  .founder-card { max-width: 284px; padding: 1.15rem; }
+}
+
+/* ============================================================
+   NAV ON LIGHT BACKDROP
+   The final (CONTACT) phase swaps in the finished-villa photo — bright sky
+   behind the nav — and the atmospheric overlay has faded out by then, so the
+   translucent nav loses contrast. main.js adds .nav-on-light to <body> across
+   that band to darken both nav pills.
+   ============================================================ */
+.nav-left-bar,
+#nav-touch-link {
+  transition: background-color 0.45s ease, border-color 0.45s ease,
+              box-shadow 0.45s ease;
+}
+
+/* Only the glass bar needs darkening here — the GET IN TOUCH button is solid
+   emerald and already holds its own against the bright sky. */
+body.nav-on-light .nav-left-bar {
+  background-color: rgba(5, 9, 15, 0.52);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.26);
+}
+
+body.nav-on-light .nav-item {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.nav-on-light .nav-item.active {
+  background: #34d399;
+  color: #020617;
+  border-color: transparent;
+}
+
+/* ============================================================
+   OUR WORK — horizontal strip of project cards ("OUR PRIDE" slides).
+   12 cards is too many to scatter, so the strip tracks sideways as you
+   scroll through the WORK band (translation driven by main.js).
+   ============================================================ */
+.work-strip-wrap {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+/* Anchored in vw, not vh, because the heading above it is sized in vw — a
+   percentage of height drifted with the window's aspect ratio. 9vw tracks the
+   heading's baseline; the constant is the gap beneath it. Capped so the cards
+   never run into the bottom-pinned CTA on a short window (1366x660 overlapped
+   by 21px without it). A card is 319px tall here. */
+@media (min-width: 640px) {
+  .work-strip-wrap { top: min(calc(9vw + 112px), calc(100vh - 400px)); }
+}
+
+/* Between 640 and 1023 the heading is sized at 7.6/7.2vw off a shorter title
+   container, so it grows faster against the viewport than the 9vw above tracks.
+   The extra 36px matches the smaller rest-lift the headings take in this range
+   (see restY in main.js) — without it the cards close right under the type. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .work-strip-wrap { top: min(calc(12.7vw + 97px), calc(100vh - 400px)); }
+}
+
+.work-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 1.6rem;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  width: max-content;
+  will-change: transform;
+}
+
+.work-card {
+  flex: 0 0 auto;
+  width: 245px;
+  margin: 0;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: rgba(9, 13, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 18px 40px -14px rgba(0, 0, 0, 0.8);
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .work-card { width: 300px; }
+  .work-strip { gap: 2.2rem; }
+}
+
+.work-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.work-card figcaption {
+  padding: 0.6rem 0.75rem 0.75rem;
+}
+
+.work-card-num {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #34d399;
+}
+
+.work-card-title {
+  margin: 0.15rem 0 0.2rem;
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.work-card-desc {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+@media (min-width: 640px) {
+  .work-card-desc {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}
+
+.work-cta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 3.5%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================================
+   CARD ZOOM LIGHTBOX MODAL
+   ============================================================ */
+body.modal-open {
+  overflow: hidden !important;
+}
+
+.card-zoom-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-zoom-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.card-zoom-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 8, 14, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  cursor: pointer;
+}
+
+.card-zoom-dialog {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 620px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.93) translateY(16px);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-zoom-modal.is-open .card-zoom-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.card-zoom-content {
+  width: 100%;
+  background: rgba(9, 13, 20, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(52, 211, 153, 0.14);
+}
+
+.card-zoom-img-container {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  max-height: 56vh;
+}
+
+@media (min-height: 720px) {
+  .card-zoom-img-container {
+    max-height: 62vh;
+  }
+}
+
+.card-zoom-img {
+  max-width: 100%;
+  max-height: 56vh;
+  object-fit: contain;
+  display: block;
+}
+
+@media (min-height: 720px) {
+  .card-zoom-img {
+    max-height: 62vh;
+  }
+}
+
+.card-zoom-badge-row {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  z-index: 5;
+}
+
+.card-zoom-badge {
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(4, 55, 42, 0.95);
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #34d399;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-zoom-category {
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
+
+.card-zoom-caption {
+  padding: 1rem 1.25rem 1.15rem;
+  text-align: left;
+}
+
+.card-zoom-title {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Space Grotesk', sans-serif;
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.card-zoom-desc {
+  margin: 0.35rem 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(226, 232, 240, 0.88);
+}
+
+/* Close button */
+.card-zoom-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.card-zoom-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #34d399;
+  color: #34d399;
+}
+
+.card-zoom-close-icon {
+  font-size: 20.5px;
+  line-height: 1;
+}
+
+.card-zoom-close-kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+}
+
+/* Nav arrows */
+.card-zoom-nav {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(9, 13, 20, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  z-index: 15;
+}
+
+.card-zoom-nav:hover {
+  background: #047857;
+  border-color: #34d399;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.card-zoom-prev {
+  left: -2.85rem;
+}
+
+.card-zoom-next {
+  right: -2.85rem;
+}
+
+@media (max-width: 768px) {
+  .card-zoom-prev { left: 0.5rem; }
+  .card-zoom-next { right: 0.5rem; }
+  .card-zoom-nav { width: 34px; height: 34px; }
+}
+
+/* ============================================================
+   MOBILE BREAKPOINTS
+   ============================================================ */
+
+/* Below sm the five nav pills already use the full 327px of available row
+   (24..351 at 375px wide), leaving nothing for GET IN TOUCH — it was running
+   to 478px, i.e. 103px off screen, hidden only by html { overflow-x: clip }.
+   The nav's own CONTACT pill goes to the same stage, so drop the button. */
+@media (max-width: 639px) {
+  #nav-touch-link {
+    display: none;
+  }
+
+  /* Give the pill row a little slack so it never has to scroll internally */
+  .nav-item {
+    padding: 0.35rem 0.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-left-bar {
+    gap: 0.15rem;
+  }
+}
+
+
+
+/* ============================================================
+   MOBILE: NAV AT THE BOTTOM
+   The pill row floats bottom-centre instead of sitting at the top, so every
+   bottom-anchored element is lifted clear of it and the top-anchored type
+   moves up into the space the nav vacated.
+   Nav pill is 38px tall at 1rem from the bottom => occupies 16..54px, so
+   4.5rem (72px) is the new floor for everything else.
+   ============================================================ */
+@media (max-width: 639px) {
+  .hero-fullscreen > nav {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    top: auto;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100vw - 1.5rem);
+    padding: 0;
+    justify-content: center;
+    z-index: 40;
+  }
+
+  /* Bottom-anchored UI clears the floating nav */
+  #hero-tabs-container,
+  #hero-contact-panel {
+    bottom: 4.5rem;
+  }
+
+  /* The contact card sits alone under its heading, so lift it off the nav
+     and split the ~300px of empty space above it with the space below. */
+  #hero-contact-panel {
+    bottom: 8.5rem;
+  }
+
+  /* Shorter phones (667px and under): the ABOUT copy card plus the founder card
+     is ~582px, which will not fit above the 72px of nav clearance. Tighten the
+     card's own padding and rhythm rather than shrinking the type. */
+  @media (max-height: 740px) {
+    #hero-about-panel > div {
+      padding: 0.75rem 0.95rem;
+    }
+
+    #hero-about-panel > div > * + * {
+      margin-top: 0.6rem;
+    }
+
+    #hero-about-panel .founder-card {
+      padding: 0.55rem;
+    }
+  }
+
+  .work-cta {
+    bottom: 4.5rem;
+  }
+
+  /* Hero CTA stacks above the drawing tabs (4.5rem + 44px tab bar), centred.
+     Centring uses left: calc(50% - half-width) rather than a translate, because
+     main.js rewrites this element's transform on every scroll frame. */
+  #hero-cta {
+    bottom: 11.75rem;
+    left: calc(50% - 8rem);   /* half of w-[16rem] */
+    right: auto;
+  }
+
+  /* Smaller drawing, sitting in the band between the wordmark and the CTA.
+     object-contain (mobile markup uses object-cover) so the whole cutaway is
+     visible instead of being cropped off both edges. */
+  #hero-drawing-container {
+    bottom: 19.5rem;
+    height: 34%;
+  }
+
+  #hero-drawing-image {
+    object-fit: contain;
+  }
+
+  /* Nothing at the top any more — pull the giant type up. 1.75rem rather than
+     1rem so the wrapper's -progress*6vh drift can't clip the later stage
+     headings off the top (WORK and CONTACT landed at -3px and -5px at 1rem). */
+  #hero-title-container {
+    top: 1.75rem;
+  }
+
+
+  /* Keep the footer's last line clear of the floating nav */
+  #site-footer {
+    padding-bottom: 4rem;
+  }
+
+  /* 46vh left ~140px of dead space, but a flat 32vh is shorter than the content
+     on a 640-667px phone. The floor is content (197px) + nav clearance (64px).
+     Spacer must match the footer or the reveal misaligns. */
+  #site-footer,
+  #footer-reveal-spacer {
+    height: max(32vh, 17rem);
+  }
+
+  /* OUR WORK: lift the strip up into the dead space under the heading and give
+     the cards real height (there were 177px empty above and 86px below).
+     Same vw anchoring as the desktop rule — see the note there. */
+  .work-strip-wrap {
+    top: calc(9vw + 44px);
+  }
+
+  .work-card {
+    width: 265px;
+  }
+
+  .work-card img {
+    aspect-ratio: 4 / 5;
+  }
+
+}
