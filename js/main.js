@@ -52,20 +52,23 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
 
       const targetSrc = btn.getAttribute('data-img');
-      const tabName = btn.textContent.trim();
+      const allDrawingImgs = document.querySelectorAll('.hero-drawing-image, #hero-drawing-image');
 
-      // Smooth crossfade to target drawing
-      if (heroImg && targetSrc && heroImg.getAttribute('src') !== targetSrc) {
-        heroImg.style.opacity = '0.15';
-        setTimeout(() => {
-          heroImg.src = targetSrc;
-          heroImg.onload = () => {
-            heroImg.style.opacity = '1';
-          };
-          setTimeout(() => {
-            heroImg.style.opacity = '1';
-          }, 80);
-        }, 150);
+      if (targetSrc) {
+        allDrawingImgs.forEach(img => {
+          if (img.getAttribute('src') !== targetSrc) {
+            img.style.opacity = '0.15';
+            setTimeout(() => {
+              img.src = targetSrc;
+              img.onload = () => {
+                img.style.opacity = '1';
+              };
+              setTimeout(() => {
+                img.style.opacity = '1';
+              }, 80);
+            }, 150);
+          }
+        });
       }
     });
   });
@@ -151,8 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (heroCta) {
+      // Holds for the first sliver of scroll, then eases out across a wider band
+      // (~0.02 -> 0.16) so it drifts away with the scroll instead of blinking off.
       const ctaT = clamp((progress - 0.02) / 0.14, 0, 1);
       const ctaOut = smoothstep(ctaT);
+      heroCta.style.opacity = (1 - ctaOut).toFixed(3);
+      heroCta.style.transform = `translate3d(0, ${(ctaOut * 44).toFixed(1)}px, 0)`;
       heroCta.style.pointerEvents = ctaOut < 0.85 ? 'auto' : 'none';
     }
 

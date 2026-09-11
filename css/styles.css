@@ -1049,16 +1049,6 @@ body.nav-on-light .nav-item.active {
   }
 }
 
-.work-cta {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3.5%;
-  display: flex;
-  justify-content: center;
-  z-index: 25;
-}
-
 /* ============================================================
    CARD ZOOM LIGHTBOX MODAL
    ============================================================ */
@@ -1365,10 +1355,6 @@ body.modal-open {
     }
   }
 
-  .work-cta {
-    bottom: 4.5rem;
-  }
-
   /* Drawing container holding combined blueprint + CTA card, flush to top with zero padding */
   #hero-drawing-container {
     bottom: 8.5rem;
@@ -1376,7 +1362,8 @@ body.modal-open {
     max-height: none;
   }
 
-  #hero-drawing-image {
+  #hero-drawing-image,
+  .hero-drawing-img-mobile {
     width: 100%;
     height: auto;
     display: block;
