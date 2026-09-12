@@ -783,6 +783,86 @@ document.addEventListener('DOMContentLoaded', () => {
     showTeamMember(teamIndex);
   }
 
+  // 8. Client Quotes / References Carousel (Our Work Stage)
+  const quoteSlides = Array.from(document.querySelectorAll('.work-quote-slide'));
+  const quoteDots = Array.from(document.querySelectorAll('.work-quote-dot'));
+  const quotePrevBtn = document.getElementById('work-quote-prev');
+  const quoteNextBtn = document.getElementById('work-quote-next');
+  const quoteCard = document.querySelector('.work-quote-card');
+  let currentQuoteIndex = 0;
+  let quoteTimer = null;
+
+  function showQuote(index) {
+    if (!quoteSlides.length) return;
+    currentQuoteIndex = (index + quoteSlides.length) % quoteSlides.length;
+
+    quoteSlides.forEach((slide, i) => {
+      const active = i === currentQuoteIndex;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    quoteDots.forEach((dot, i) => {
+      const active = i === currentQuoteIndex;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+  }
+
+  function nextQuote() {
+    showQuote(currentQuoteIndex + 1);
+  }
+
+  function prevQuote() {
+    showQuote(currentQuoteIndex - 1);
+  }
+
+  function startQuoteTimer() {
+    stopQuoteTimer();
+    quoteTimer = setInterval(nextQuote, 6000);
+  }
+
+  function stopQuoteTimer() {
+    if (quoteTimer) {
+      clearInterval(quoteTimer);
+      quoteTimer = null;
+    }
+  }
+
+  if (quotePrevBtn) {
+    quotePrevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevQuote();
+      startQuoteTimer();
+    });
+  }
+
+  if (quoteNextBtn) {
+    quoteNextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextQuote();
+      startQuoteTimer();
+    });
+  }
+
+  quoteDots.forEach((dot, i) => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showQuote(i);
+      startQuoteTimer();
+    });
+  });
+
+  if (quoteCard) {
+    quoteCard.addEventListener('mouseenter', stopQuoteTimer);
+    quoteCard.addEventListener('mouseleave', startQuoteTimer);
+    quoteCard.addEventListener('touchstart', stopQuoteTimer, { passive: true });
+    quoteCard.addEventListener('touchend', startQuoteTimer, { passive: true });
+  }
+
+  startQuoteTimer();
+  window.showQuote = showQuote;
+
   // Initial trigger
   syncSubtitleWidth();
   measureAboutInk();
